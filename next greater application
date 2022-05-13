@@ -1,0 +1,30 @@
+class Solution{
+    public:
+        int profit(vector<int>v)
+    {
+        reverse(v.begin(),v.end());
+        int s1=0;
+        stack<int>s;
+        s.push(v[0]);
+        s1=s1+v[0];
+        for(int i=1;i<v.size();i++)
+        {
+            while(s.empty()==false && v[i]>s.top())
+            {
+                s.pop();
+            }
+            if(s.empty()==true)
+            {
+                s1=s1+v[i];
+            }
+            else
+            {
+                s1=s1+s.top()-v[i];
+            }
+            s.push(v[i]);
+            
+        }
+        return s1;
+        
+    }
+};
